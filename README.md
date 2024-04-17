@@ -2,7 +2,7 @@
 
 This Attendance Tracker app is built using React and helps users keep track of their attendance percentage for a course or any other activity that requires attendance monitoring.
 
-<h1> Features: </>
+<h1> Features: </h1>
 
 Total Lectures Input: Allows users to input the total number of lectures or sessions for the course/activity.
 
