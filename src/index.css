@@ -6,3 +6,7 @@
 input::-webkit-inner-spin-button{
     display: none;
 }
+
+.text{
+    text-shadow: 2px 3px 2px #09edea;
+}
