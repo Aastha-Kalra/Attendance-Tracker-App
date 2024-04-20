@@ -10,15 +10,21 @@ const Attendence = () => {
   const [needLecture, setNeedLecture] = useState(0);
 
   const calculatePercentage = () => {
-    const percent = (attendedLecture / totalLectures) * 100;
-    setPercentage(`${percent.toFixed(2)}`);
-
-    if (percent >= 75) {
-      setNeedLecture("You have reached 75% attendence");
-    } else {
-      const needAttendence = Math.ceil(0.75 * totalLectures - attendedLecture);
-      setNeedLecture(`You are required to attend ${needAttendence} lectures`);
+    if(Number(totalLectures)>=Number(attendedLecture)){
+      const percent = (attendedLecture / totalLectures) * 100;
+      setPercentage(`${percent.toFixed(2)}`);
+  
+      if (percent >= 75) {
+        setNeedLecture("You have reached 75% attendence");
+      } else {
+        const needAttendence = Math.ceil(0.75 * totalLectures - attendedLecture);
+        setNeedLecture(`You are required to attend ${needAttendence} lectures`);
+      }
     }
+    else{
+      alert("Attend lectures should be less than or equal to total lectures")
+    }
+    
   };
 
   return (
@@ -38,7 +44,7 @@ const Attendence = () => {
       <Button calculatePercentage={calculatePercentage} />
       <Percentage percent={percentage} needLecture={needLecture} />
 
-      <footer className="bg-indigo-900 w-full h-10 text-white items-center flex justify-center">
+      <footer className="bg-indigo-900 w-full h-10 text-white items-center flex justify-center my-0 absolute bottom-0">
         Made By Aastha Kalra &#10084;
       </footer>
     </div>
