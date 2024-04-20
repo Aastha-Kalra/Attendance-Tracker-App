@@ -7,29 +7,30 @@ const Attendence = () => {
   const [attendedLecture, setAttendedLecture] = useState();
   const [totalLectures, setTotalLectures] = useState();
   const [percentage, setPercentage] = useState(0);
-  const [needLecture, setNeedLecture] = useState(0);
-
+  const [needLecture, setNeedLecture] = useState('😊');
+  const [emoji,setEmoji]=useState(null)
   const calculatePercentage = () => {
     if(Number(totalLectures)>=Number(attendedLecture)){
       const percent = (attendedLecture / totalLectures) * 100;
       setPercentage(`${percent.toFixed(2)}`);
   
       if (percent >= 75) {
-        setNeedLecture("You have reached 75% attendence");
+        setNeedLecture("WOW !!🤩 You have reached 75% attendence");
+        setEmoji('🥳')
       } else {
         const needAttendence = Math.ceil(0.75 * totalLectures - attendedLecture);
-        setNeedLecture(`You are required to attend ${needAttendence} lectures`);
+        setNeedLecture(`Oh No!! ☹️ You are required to attend ${needAttendence} lectures`);
+        setEmoji('😮')
       }
     }
     else{
       alert("Attend lectures should be less than or equal to total lectures")
     }
-    
   };
 
   return (
-    <div className="w-full h-screen bg-slate-200 flex flex-col justify-center items-center gap-10 tracking-wider">
-      <div className="text-3xl font-bold text-sky-500 text">
+    <div className="w-full h-screen flex flex-col justify-center items-center gap-10 tracking-wider">
+      <div className="text-3xl font-extrabold text animate-pulse">
         Attendence Tracker App
       </div>
 
@@ -42,9 +43,9 @@ const Attendence = () => {
         setAttendedLecture={setAttendedLecture}
       />
       <Button calculatePercentage={calculatePercentage} />
-      <Percentage percent={percentage} needLecture={needLecture} />
+      <Percentage percent={percentage} needLecture={needLecture} emoji={emoji} />
 
-      <footer className="bg-indigo-900 w-full h-10 text-white items-center flex justify-center my-0 absolute bottom-0">
+      <footer className="bg-sky-700 w-full h-10 text-white items-center flex justify-center my-0 absolute bottom-0">
         Made By Aastha Kalra &#10084;
       </footer>
     </div>
