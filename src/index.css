@@ -10,3 +10,12 @@ input::-webkit-inner-spin-button{
 .text{
     text-shadow: 2px 3px 2px #09edea;
 }
+
+body{
+    background: url('Images/bg.jpeg');
+    background-position: center;
+    background-size: cover;
+    filter: blur(0px);
+
+}
+
